@@ -10,6 +10,11 @@ describe "correct tax liability" do
   let(:paid){10}
   let(:rate){38}
 
+
+
+  let(:paid2){400}
+  let(:taxes2){Tax.new(first_name, last_name, annual, paid2, rate)}
+
   it "takes in first name" do
     expect(taxes.first_name).to eq(first_name)
   end
@@ -31,18 +36,22 @@ describe "correct tax liability" do
   end
 
   it "calculates tax owed" do
-    expect(taxes.owed).to eq(annual * rate/100.0)
+    expect(taxes.owed).to eq(380)
   end
 
   it "calculates tax return" do
-    expect(taxes.tax_return).to eq(taxes.owed - paid)
+    expect(taxes.tax_due).to eq(370)
   end
 
-  it "calculates correct tax liability" do
-    expect(taxes.liability).to eq()
+  it "calculates correct tax liability where it is owed" do
+    expect(taxes.liability).to eq("Keith Bjornburger owes $370 in taxes")
   end
 
-  it "returns correct output interpolation"
+  it "calculates correct tax liability where it is a return" do
+    expect(taxes2.liability).to eq("Keith Bjornburger will receive a refund of $20")
+  end
+
+
 
 
 end
