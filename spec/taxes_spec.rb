@@ -1,5 +1,6 @@
 require 'rspec'
-require_relative '../lib/taxes'
+require_relative '../lib/tax_class'
+
 
 describe "correct tax liability" do
 

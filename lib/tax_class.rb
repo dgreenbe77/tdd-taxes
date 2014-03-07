@@ -29,7 +29,7 @@ attr_reader :first_name, :last_name, :annual, :paid, :rate
   end
 
   def to_s
-      puts liability
+      liability
   end
 
 end
@@ -38,7 +38,7 @@ end
 people = []
 
 
-CSV.foreach('taxes.csv', headers: true, header_converters: :symbol, converters: :all ) do |row|
+CSV.foreach('../taxes.csv', headers: true, header_converters: :symbol, converters: :all ) do |row|
     people << Tax.new(row[:first_name], row[:last_name], row[:annual_income], row[:tax_paid], row[:tax_rate])
 end
 
